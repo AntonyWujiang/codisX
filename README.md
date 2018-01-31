@@ -3,8 +3,7 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodisLabs/codis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/CodisLabs/codis.svg)](https://travis-ci.org/CodisLabs/codis)
 
-Codis is a proxy based high performance Redis cluster solution written in Go, which is widely used in many companies. The official github address is https://github.com/CodisLabs/codis.
-
+Codis is a proxy based high performance Redis cluster solution written in Go, which is widely used in many companies.
 CodisX is based on the latest version of codis 3.2.2.
 
 As is known, in production scenarios, we basically use cache in two ways:
@@ -28,3 +27,6 @@ If you have questions on codisX, feel free to send e-mails to me (e0012443@u.nus
 
 GroupWeights
 ![groupWeights](doc/pictures/group_weights.png)
+
+## official address of codis
+https://github.com/CodisLabs/codis
