@@ -50,7 +50,7 @@ Options:
 
 	switch {
 
-	case d["--default-config"]:
+	case d["--default-config"].(bool):
 		fmt.Println(proxy.DefaultConfig)
 		return
 
