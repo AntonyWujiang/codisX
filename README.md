@@ -1,9 +1,5 @@
-<img src="doc/pictures/logo-3.png" height=80></img>
-
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodisLabs/codis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/CodisLabs/codis.svg)](https://travis-ci.org/CodisLabs/codis)
-
 Codis is a proxy based high performance Redis cluster solution written in Go, which is widely used in many companies.
+
 CodisX is based on the latest version of codis 3.2.2.
 
 As is known, in production scenarios, we basically use cache in two ways:
