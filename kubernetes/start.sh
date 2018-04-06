@@ -34,7 +34,6 @@ buildup)
     server_replica=$(grep -n "name: SERVER_REPLICA" codis-server.yaml|awk  '{print $1}')
     line_num=${server_replica%:*}
     next=$(($line_num+1))
-    echo $next
     if [ $cur = $targ ]; then
         echo "in AP mode"
         replace="          value: \"2\""
