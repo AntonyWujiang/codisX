@@ -36,11 +36,11 @@ buildup)
     next=$(($line_num+1))
     if [ $cur = $targ ]; then
         echo "in AP mode"
-        replace="          value: \"2\""
+        replace="          value: \"1\""
         sed -i '' "${next}s/.*/${replace}/" codis-server.yaml
     else
         echo "in CP mode"
-        replace="          value: \"1\""
+        replace="          value: \"2\""
         sed -i '' "${next}s/.*/${replace}/" codis-server.yaml
     fi
     kubectl create -f codis-server.yaml
