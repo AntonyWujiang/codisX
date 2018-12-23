@@ -562,8 +562,8 @@ const (
 
 func (s *Proxy) Overview(flags StatsFlags) *Overview {
 	o := &Overview{
-		Version: utils.Version,
-		Compile: utils.Compile,
+		//Version: utils.Version,
+		//Compile: utils.Compile,
 		Config:  s.Config(),
 		Model:   s.Model(),
 		Stats:   s.Stats(flags),
