@@ -14,6 +14,7 @@ import (
 	"github.com/CodisLabs/codis/pkg/utils/log"
 	"strconv"
 	"github.com/CodisLabs/codis/pkg/utils/math2"
+	"math/rand"
 )
 
 type forwardMethod interface {
@@ -218,11 +219,15 @@ func (d *forwardHelper) slotsmgrtExecWrapper(s *Slot, hkey []byte, database int3
 func (d *forwardHelper) forward2(s *Slot, r *Request, router *Router) *BackendConn {
 	var database, seed = r.Database, r.Seed16()
 	if s.migrate.bc == nil && !r.IsMasterOnly() && len(s.replicaGroups) != 0 {
+		log.Info("replica: ", s.replicaGroups)
 		for _, group := range s.replicaGroups {
-			var i = seed
-			for range group {
-				i = (i + 1) % uint(len(group))
+			for _ = range group {
+				log.Info("group: ", group)
+				log.Info("group size: ", len(group))
+				i := randInt(0, len(group))
+				log.Info("i: ", i)
 				if bc := group[i].BackendConn(database, seed, false); bc != nil {
+					log.Info("bc: ", bc)
 					return bc
 				}
 			}
@@ -275,4 +280,11 @@ func existInSlice(element string, brokenList []string) bool {
 		}
 	}
 	return false
+}
+
+func randInt(min, max int) int {
+	if min >= max || max == 0 {
+		return max
+	}
+	return rand.Intn(max-min) + min
 }

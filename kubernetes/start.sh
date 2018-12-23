@@ -28,6 +28,21 @@ buildup)
     kubectl create -f codis-dashboard.yaml
     while [ $(kubectl get pods -l app=codis-dashboard |grep Running |wc -l) != 1 ]; do sleep 1; done;
     kubectl create -f codis-proxy.yaml
+    #判断当前集群的工作模式，以决定codis-server.yaml中SERVER_REPLICA的数量
+    cur=$(grep "working_mode" ../config/dashboard.toml |awk  '{print $3}'|sed 's/\"//g')
+    targ="AP"
+    server_replica=$(grep -n "name: SERVER_REPLICA" codis-server.yaml|awk  '{print $1}')
+    line_num=${server_replica%:*}
+    next=$(($line_num+1))
+    if [ $cur = $targ ]; then
+        echo "in AP mode"
+        replace="          value: \"1\""
+        sed -i '' "${next}s/.*/${replace}/" codis-server.yaml
+    else
+        echo "in CP mode"
+        replace="          value: \"2\""
+        sed -i '' "${next}s/.*/${replace}/" codis-server.yaml
+    fi
     kubectl create -f codis-server.yaml
     servers=$(grep "replicas" codis-server.yaml |awk  '{print $2}')
     while [ $(kubectl get pods -l app=codis-server |grep Running |wc -l) != $servers ]; do sleep 1; done;

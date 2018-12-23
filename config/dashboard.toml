@@ -8,18 +8,18 @@
 # Set Coordinator, only accept "zookeeper" & "etcd" & "filesystem".
 # for zookeeper/etcd, coorinator_auth accept "user:password"
 # Quick Start
-coordinator_name = "filesystem"
-coordinator_addr = "/tmp/codis"
-#coordinator_name = "zookeeper"
-#coordinator_addr = "127.0.0.1:2181"
+#coordinator_name = "filesystem"
+#coordinator_addr = "/tmp/codis"
+coordinator_name = "zookeeper"
+coordinator_addr = "127.0.0.1:2181"
 #coordinator_auth = ""
 
 # Set Codis Product Name/Auth.
-product_name = "codis-demo"
+product_name = "codisX-demo"
 product_auth = ""
 
 # Set bind address for admin(rpc), tcp only.
-admin_addr = "0.0.0.0:18080"
+admin_addr = "127.0.0.1:18080"
 
 # Set arguments for data migration (only accept 'sync' & 'semi-async').
 migration_method = "semi-async"
@@ -39,4 +39,4 @@ sentinel_notification_script = ""
 sentinel_client_reconfig_script = ""
 
 # Set work mode for codis cluster (only accept 'CP' & 'AP',default is 'CP').
-working_mode = "CP"
+working_mode = "AP"
